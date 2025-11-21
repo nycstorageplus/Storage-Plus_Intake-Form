@@ -189,10 +189,12 @@
          <p>Opt in for Text Messages(Msg & Data rates may apply) <span style="color: red;">*</span></p>
          <div class="checkbox-group">
             <label>
-               <input type="radio" name="text_opt_in" value="Yes" id="text_yes">       Yes
+            <input type="radio" name="text_opt_in" value="Yes" id="text_yes" required> Yes
+
             </label>
             <label>
-               <input type="radio" name="text_opt_in" value="No" id="text_no">       No
+			<input type="radio" name="text_opt_in" value="No" id="text_no"> No
+      
             </label>
             <div id="text-checkbox-error" class="error-message">Please select Yes or No for text message opt-in</div>
          </div>
@@ -414,6 +416,7 @@ document.querySelector('form').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
 
