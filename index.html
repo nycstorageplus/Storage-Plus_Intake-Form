@@ -231,7 +231,7 @@ color: #666;
 <img src="./1.png" alt="Storage Plus Logo" class="logo">
 <h1>Storage Plus Intake Form</h1>
 
-<p class="required-note">* Indicates required fields</p>
+
 
 <!-- Success Message -->
 <div id="success-message" class="success-message">
@@ -249,6 +249,7 @@ color: #666;
 </div>
 
 <form id="intakeForm">
+<p class="required-note">* Indicates required fields</p>
 <div class="form-section">
 <div class="section-title">Contact Information</div>
 <div class="form-row">
@@ -331,27 +332,39 @@ color: #666;
 </div>
 
 <div class="form-section">
-<div class="section-title">Additional Access Authorization</div>
-<p>Additional Person(s) authorized for Access (vacate/close account, transfer, cutluck):</p>
-<p>First and Last Name #1:</p>
-<input type="text" name="authorized_person_1" placeholder="Enter first and last name">
-<p>First and Last Name #2:</p>
-<input type="text" name="authorized_person_2" placeholder="Enter first and last name">
+  <div class="section-title">Additional Access Authorization</div>
 
-<div class="form-row">
-<div>
-<p>Phone #1:</p>
-<input type="tel" name="phone_1" placeholder="Enter first phone number">
-</div>
-<div>
-<p>Phone #2:</p>
-<input type="tel" name="phone_2" placeholder="Enter second phone number">
-</div>
-</div>
-<p>Owner hereby grants month to month permission to the occupant listed above to store personal property according to the terms and conditions of this agreement in the stored unit at the facility first name above commencing on ____: <span style="color: red;">*</span></p>
-<input type="text" name="commencement_date" required placeholder="Enter start date">
-</div>
+  <p>Additional Person(s) authorized for Access (vacate/close account, transfer, cutluck):</p>
 
+  <div class="form-row">
+    <div>
+      <p>First and Last Name #1:</p>
+      <input type="text" name="authorized_person_1" placeholder="Enter first and last name">
+    </div>
+    <div>
+      <p>Phone #1:</p>
+      <input type="tel" name="phone_1" placeholder="Enter first phone number">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <p>First and Last Name #2:</p>
+      <input type="text" name="authorized_person_2" placeholder="Enter first and last name">
+    </div>
+    <div>
+      <p>Phone #2:</p>
+      <input type="tel" name="phone_2" placeholder="Enter second phone number">
+    </div>
+  </div>
+
+</div>
+<p>
+Owner hereby grants month to month permission to the occupant listed above to store personal property according to the terms and conditions of this agreement in the stored unit at the facility first name above commencing on 
+<input type="date" name="commencement_date" required style="display: inline-block; width: auto;">
+<span style="color: red;">*</span>
+</p>
+<p><br></p>
 <div class="form-section">
 <div class="section-title">Payment Information</div>
 
@@ -396,7 +409,7 @@ Auto-payment
 <input type="text" name="card_cvv" placeholder="Enter CVV" id="card_cvv_field" maxlength="4">
 
 <p>Expiration Date (MM/YY): <span style="color: red;">*</span></p>
-<input type="text" name="card_expiration" placeholder="MM/YY" id="card_expiration_field">
+<input type="month" name="card_expiration" placeholder="MM/YY" id="card_expiration_field">
 
 </div>
 </div>
@@ -762,7 +775,6 @@ console.log('Script setup complete');
 
 </body>
 </html>
-
 
 
 
